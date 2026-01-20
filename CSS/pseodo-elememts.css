@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p::first-line {
+  color: red;
+  font-variant: small-caps;
+  font-size: 19px;  
+}
+</style>
+</head>
+<body>
+
+<h2>Nguyễn Thị Bích Hà</h2>
+
+<p>Nguyễn Thị Bích Hà ::2221050701.</p>
+
+</body>
+</html>
+
+
+
