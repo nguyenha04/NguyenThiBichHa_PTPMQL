@@ -1,0 +1,15 @@
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\bin\Debug\net10.0\NewApp.exe
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\bin\Debug\net10.0\NewApp.deps.json
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\bin\Debug\net10.0\NewApp.runtimeconfig.json
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\bin\Debug\net10.0\NewApp.dll
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\bin\Debug\net10.0\NewApp.pdb
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.AssemblyInfoInputs.cache
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.AssemblyInfo.cs
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.csproj.CoreCompileInputs.cache
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.sourcelink.json
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.dll
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\refint\NewApp.dll
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.pdb
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\NewApp.genruntimeconfig.cache
+C:\Users\LATITUDE 5530\Documents\PTPMQL\NetCoreAPI\NewApp\obj\Debug\net10.0\ref\NewApp.dll
