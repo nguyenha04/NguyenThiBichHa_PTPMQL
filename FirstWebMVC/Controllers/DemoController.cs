@@ -9,5 +9,15 @@ namespace FirstWebMVC.Controllers
         {
             return View();
         }
+           [HttpPost]
+        public IActionResult Index(string FullName)
+        {
+            ViewBag.Name = "Hello " + FullName;
+            return View();
+        }
+        public IActionResult Test()
+        {
+            return View();
+        }
     }
 }
