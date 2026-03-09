@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LATITUDE 5530\\Documents\\PTPMQL\\NetCoreAPI\\NewApp\\NewApp.csproj",
+      "projectUniqueName": "C:\\Users\\LATITUDE 5530\\Documents\\BichHaNguien\\PTPMQL\\NetCoreAPI\\NewApp\\NewApp.csproj",
       "projectName": "NewApp",
-      "projectPath": "C:\\Users\\LATITUDE 5530\\Documents\\PTPMQL\\NetCoreAPI\\NewApp\\NewApp.csproj",
+      "projectPath": "C:\\Users\\LATITUDE 5530\\Documents\\BichHaNguien\\PTPMQL\\NetCoreAPI\\NewApp\\NewApp.csproj",
       "packagesPath": "C:\\Users\\LATITUDE 5530\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LATITUDE 5530\\Documents\\PTPMQL\\NetCoreAPI\\NewApp\\obj\\",
+      "outputPath": "C:\\Users\\LATITUDE 5530\\Documents\\BichHaNguien\\PTPMQL\\NetCoreAPI\\NewApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LATITUDE 5530\\AppData\\Roaming\\NuGet\\NuGet.Config"
