@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Encodings.Web;
-namespace FirstWebMVC.Controllers
+namespace FirstWebMVCMVC.Controllers
 {
     public class DemoController : Controller
     {
@@ -9,7 +8,7 @@ namespace FirstWebMVC.Controllers
         {
             return View();
         }
-           [HttpPost]
+        [HttpPost]
         public IActionResult Index(string FullName)
         {
             ViewBag.Name = "Hello " + FullName;

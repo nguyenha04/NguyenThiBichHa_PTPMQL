@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using FirstWebMVC.Models.Entities;
 
-namespace FirstWebMVC.Data
-{
+namespace FirstWebMVC.Data;
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -11,6 +10,5 @@ namespace FirstWebMVC.Data
         }
 
         public DbSet<Student> Students { get; set; }
-        public DbSet<Product> Products { get; set; }
+        
     }
-}

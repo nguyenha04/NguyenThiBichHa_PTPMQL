@@ -1,0 +1,21 @@
+@model FirstWebMVC.Models.Entities.Student
+
+<h2>Xác nhận xoá sinh viên</h2>
+
+<p>Bạn có chắc chắn muốn xoá sinh viên này không?</p>
+
+<div>
+    <p><b>Mã SV:</b> @Model.StudentCode</p>
+    <p><b>Họ tên:</b> @Model.FullName</p>
+   
+</div>
+
+<form asp-action="Delete" method="post">
+
+    <input type="hidden" asp-for="StudentCode" />
+
+    <button type="submit">Xác nhận xoá</button>
+
+    <a asp-action="Index">Huỷ</a>
+
+</form>

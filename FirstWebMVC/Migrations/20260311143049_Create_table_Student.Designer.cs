@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstWebMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260309194622_Create_table_Student")]
+    [Migration("20260311143049_Create_table_Student")]
     partial class Create_table_Student
     {
         /// <inheritdoc />
@@ -23,6 +23,9 @@ namespace FirstWebMVC.Migrations
                 {
                     b.Property<string>("StudentCode")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("Age")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FullName")
                         .IsRequired()
