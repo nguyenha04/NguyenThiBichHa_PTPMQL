@@ -1,4 +1,4 @@
-@model IEnumerable<FirstWebMVC.Models.Entities.Student>
+@model IEnumerable<FirstWebMVC.Models.ViewModels.StudentVM>
 
 @{
     ViewData["Title"] = "Index";
@@ -18,6 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
+            <th>
+                @Html.DisplayNameFor(ModelExpressionProvider => ModelExpressionProvider.FacultyName)
+            </th>
             <th>Action</th>
         </tr>
     </thead>
@@ -32,6 +35,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
+                <>
+                    @Html.DisplayFor(modelItem => item.FacultyName)
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.StudentCode">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.StudentCode">Details</a> |

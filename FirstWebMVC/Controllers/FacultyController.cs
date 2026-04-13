@@ -7,34 +7,25 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FirstWebMVC.Data;
 using FirstWebMVC.Models.Entities;
-using FirstWebMVC.Models.ViewModels;
 
 namespace FirstWebMVC.Controllers
 {
-    public class StudentController : Controller
+    public class FacultyController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public StudentController(ApplicationDbContext context)
+        public FacultyController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Student
+        // GET: Faculty
         public async Task<IActionResult> Index()
         {
-            var result = await _context.Students
-                            .Select(s => new StudentVM
-                            {
-                                StudentCode = s.StudentCode,
-                                FullName = s.FullName,
-                                FacultyName = s.Faculty!.FacultyName
-                            })
-                            .ToListAsync();
-            return View(result);
+            return View(await _context.Faculties.ToListAsync());
         }
 
-        // GET: Student/Details/5
+        // GET: Faculty/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -42,46 +33,39 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentCode == id);
-            if (student == null)
+            var faculty = await _context.Faculties
+                .FirstOrDefaultAsync(m => m.FacultyId == id);
+            if (faculty == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(faculty);
         }
 
-        // GET: Student/Create
+        // GET: Faculty/Create
         public IActionResult Create()
         {
-            ViewData["FacultyId"] = new SelectList(_context.Faculties, "FacultyId", "FacultyName");
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Faculty/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentCode,FullName,FacultyId")] Student student)
+        public async Task<IActionResult> Create([Bind("FacultyId,FacultyName")] Faculty faculty)
         {
             if (ModelState.IsValid)
             {
-                if (StudentExists(student.StudentCode))
-                {
-                    ModelState.AddModelError("StudentCode", "Ma sinh vien da ton tai");
-                    return View(student);
-                }
-                _context.Add(student);
+                _context.Add(faculty);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FacultyId"] = new SelectList(_context.Faculties, "FacultyId", "FacultyName", student.FacultyId);
-            return View(student);
+            return View(faculty);
         }
 
-        // GET: Student/Edit/5
+        // GET: Faculty/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -89,23 +73,22 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var faculty = await _context.Faculties.FindAsync(id);
+            if (faculty == null)
             {
                 return NotFound();
             }
-            ViewData["FacultyId"] = new SelectList(_context.Faculties, "FacultyId", "FacultyName", student.FacultyId);
-            return View(student);
+            return View(faculty);
         }
 
-        // POST: Student/Edit/5
+        // POST: Faculty/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("StudentCode,FullName,FacultyId")] Student student)
+        public async Task<IActionResult> Edit(string id, [Bind("FacultyId,FacultyName")] Faculty faculty)
         {
-            if (id != student.StudentCode)
+            if (id != faculty.FacultyId)
             {
                 return NotFound();
             }
@@ -114,12 +97,12 @@ namespace FirstWebMVC.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(faculty);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.StudentCode))
+                    if (!FacultyExists(faculty.FacultyId))
                     {
                         return NotFound();
                     }
@@ -130,11 +113,10 @@ namespace FirstWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FacultyId"] = new SelectList(_context.Faculties, "FacultyId", "FacultyName", student.FacultyId);
-            return View(student);
+            return View(faculty);
         }
 
-        // GET: Student/Delete/5
+        // GET: Faculty/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -142,34 +124,34 @@ namespace FirstWebMVC.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentCode == id);
-            if (student == null)
+            var faculty = await _context.Faculties
+                .FirstOrDefaultAsync(m => m.FacultyId == id);
+            if (faculty == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(faculty);
         }
 
-        // POST: Student/Delete/5
+        // POST: Faculty/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var student = await _context.Students.FindAsync(id);
-            if (student != null)
+            var faculty = await _context.Faculties.FindAsync(id);
+            if (faculty != null)
             {
-                _context.Students.Remove(student);
+                _context.Faculties.Remove(faculty);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(string id)
+        private bool FacultyExists(string id)
         {
-            return _context.Students.Any(e => e.StudentCode == id);
+            return _context.Faculties.Any(e => e.FacultyId == id);
         }
     }
 }
