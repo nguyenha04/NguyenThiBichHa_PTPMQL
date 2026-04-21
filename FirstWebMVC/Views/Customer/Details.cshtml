@@ -1,0 +1,15 @@
+@model FirstWebMVC.Models.Entities.Customer
+
+<h2>Chi tiết khách hàng</h2>
+
+<div>
+    <p><strong>Tên:</strong> @Model.Name</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Phone:</strong> @Model.Phone</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.CustomerId">Sửa</a> |
+    <a asp-action="Index">Quay lại</a> |
+    <a asp-action="Orders" asp-route-id="@Model.CustomerId">Xem đơn hàng</a>
+</p>

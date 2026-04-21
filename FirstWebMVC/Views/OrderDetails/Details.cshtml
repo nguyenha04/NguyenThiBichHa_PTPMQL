@@ -1,0 +1,20 @@
+@model FirstWebMVC.Models.Entities.OrderDetail
+
+@{
+    ViewData["Title"] = "Chi tiết";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+    <p><strong>Mã đơn:</strong> @Model.OrderId</p>
+    <p><strong>Sản phẩm:</strong> @Model.Product?.ProductName</p>
+    <p><strong>Số lượng:</strong> @Model.Quantity</p>
+    <p><strong>Giá:</strong> @Model.Price</p>
+    <p><strong>Thành tiền:</strong> @(Model.Quantity * Model.Price)</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.OrderDetailId">Sửa</a> |
+    <a asp-action="Index">Quay lại</a>
+</p>

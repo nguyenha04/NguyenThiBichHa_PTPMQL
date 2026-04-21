@@ -1,0 +1,17 @@
+@model FirstWebMVC.Models.Entities.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    <p><strong>Tên sản phẩm:</strong> @Model.ProductName</p>
+    <p><strong>Giá:</strong> @Model.Price</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.ProductId">Sửa</a> |
+    <a asp-action="Index">Quay lại</a>
+</p>

@@ -1,0 +1,35 @@
+@model IEnumerable<FirstWebMVC.Models.Entities.Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm sản phẩm</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Price</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductId">Chi tiết</a> |
+                <a asp-action="Edit" asp-route-id="@item.ProductId">Sửa</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

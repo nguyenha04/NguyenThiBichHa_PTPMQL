@@ -1,0 +1,55 @@
+@model FirstWebMVC.Models.Entities.Customer
+
+@{
+    ViewData["Title"] = "Đơn hàng của khách hàng";
+}
+
+<h2>Đơn hàng của @Model.Name</h2>
+
+@if (Model.Orders == null || !Model.Orders.Any())
+{
+    <p>Khách hàng chưa có đơn hàng nào.</p>
+}
+else
+{
+    @foreach (var order in Model.Orders)
+    {
+        <h4>Đơn hàng #@order.OrderId - @order.OrderDate.ToString("dd/MM/yyyy")</h4>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+            @{
+                decimal total = 0;
+            }
+
+            @foreach (var item in order.OrderDetails)
+            {
+                var thanhTien = item.Quantity * item.Price;
+                total += thanhTien;
+
+                <tr>
+                    <td>@item.Product?.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>@thanhTien</td>
+                </tr>
+            }
+
+            <tr>
+                <td colspan="3"><strong>Tổng tiền</strong></td>
+                <td><strong>@total</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    }
+}
+
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

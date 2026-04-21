@@ -1,0 +1,39 @@
+@model IEnumerable<FirstWebMVC.Models.Entities.Customer>
+
+@{
+    ViewData["Title"] = "Danh sách khách hàng";
+}
+
+<h2>Danh sách khách hàng</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.CustomerId">Chi tiết</a> |
+                <a asp-action="Edit" asp-route-id="@item.CustomerId">Sửa</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerId">Xóa</a> |
+                <a asp-action="Orders" asp-route-id="@item.CustomerId">Đơn hàng</a>
+                <a asp-action="Orders" asp-route-id="@item.CustomerId">Xem đơn hàng</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

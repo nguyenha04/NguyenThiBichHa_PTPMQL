@@ -1,0 +1,25 @@
+@model FirstWebMVC.Models.Entities.Order
+
+@{
+    ViewData["Title"] = "Sửa đơn hàng";
+}
+
+<h2>Sửa đơn hàng</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="OrderId" />
+
+    <div class="form-group">
+        <label>Khách hàng</label>
+        <select asp-for="CustomerId" asp-items="ViewBag.CustomerId" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Ngày đặt</label>
+        <input asp-for="OrderDate" type="date" class="form-control" />
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Cập nhật</button>
+    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+</form>

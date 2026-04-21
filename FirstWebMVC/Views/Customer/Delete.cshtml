@@ -1,0 +1,18 @@
+@model FirstWebMVC.Models.Entities.Customer
+
+<h2>Xóa khách hàng</h2>
+
+<h4>Bạn có chắc chắn muốn xóa không?</h4>
+
+<div>
+    <p><strong>Tên:</strong> @Model.Name</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Phone:</strong> @Model.Phone</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="CustomerId" />
+
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

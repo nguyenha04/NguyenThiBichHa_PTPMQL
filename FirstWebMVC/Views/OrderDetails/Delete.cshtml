@@ -1,0 +1,22 @@
+@model FirstWebMVC.Models.Entities.OrderDetail
+
+@{
+    ViewData["Title"] = "Xóa";
+}
+
+<h2>Xóa chi tiết đơn hàng</h2>
+
+<h4>Bạn có chắc muốn xóa không?</h4>
+
+<div>
+    <p><strong>Đơn hàng:</strong> @Model.OrderId</p>
+    <p><strong>Sản phẩm:</strong> @Model.Product?.ProductName</p>
+    <p><strong>Số lượng:</strong> @Model.Quantity</p>
+</div>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="OrderDetailId" />
+
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

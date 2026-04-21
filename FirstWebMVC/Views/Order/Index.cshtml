@@ -1,0 +1,37 @@
+@model IEnumerable<FirstWebMVC.Models.Entities.Order>
+
+@{
+    ViewData["Title"] = "Danh sách đơn hàng";
+}
+
+<h2>Danh sách đơn hàng</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Tạo đơn hàng</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã đơn</th>
+            <th>Khách hàng</th>
+            <th>Ngày đặt</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.OrderId</td>
+            <td>@item.Customer?.Name</td>
+            <td>@item.OrderDate.ToString("dd/MM/yyyy")</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.OrderId">Chi tiết</a> |
+                <a asp-action="Edit" asp-route-id="@item.OrderId">Sửa</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

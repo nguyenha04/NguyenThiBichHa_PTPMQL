@@ -1,0 +1,43 @@
+@model IEnumerable<FirstWebMVC.Models.Entities.OrderDetail>
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm chi tiết</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Mã đơn</th>
+            <th>Sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    var thanhTien = item.Quantity * item.Price;
+
+    <tr>
+        <td>@item.OrderId</td>
+        <td>@item.Product?.ProductName</td>
+        <td>@item.Quantity</td>
+        <td>@item.Price</td>
+        <td>@thanhTien</td>
+        <td>
+            <a asp-action="Details" asp-route-id="@item.OrderDetailId">Chi tiết</a> |
+            <a asp-action="Edit" asp-route-id="@item.OrderDetailId">Sửa</a> |
+            <a asp-action="Delete" asp-route-id="@item.OrderDetailId">Xóa</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
