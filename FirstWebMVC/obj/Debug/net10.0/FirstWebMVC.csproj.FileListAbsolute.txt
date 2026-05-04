@@ -365,3 +365,11 @@ C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\
 C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\obj\Debug\net10.0\FirstWeb.D601D611.Up2Date
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\EPPlus.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\EPPlus.Interfaces.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\EPPlus.System.Drawing.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\System.Drawing.Common.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\LATITUDE 5530\Documents\BichHaNguien\PTPMQL\NetCoreAPI\FirstWebMVC\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll

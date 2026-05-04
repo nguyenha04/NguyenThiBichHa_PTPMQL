@@ -1,4 +1,5 @@
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,16 +9,20 @@ using Microsoft.EntityFrameworkCore;
 using FirstWebMVC.Data;
 using FirstWebMVC.Models.Entities;
 using FirstWebMVC.Models.ViewModels;
+using System.ComponentModel.Design;
+using FirstWebMVC.Models.Process;
 
 namespace FirstWebMVC.Controllers
 {
     public class StudentController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ExcelProcess _excelProcess;
 
         public StudentController(ApplicationDbContext context)
         {
             _context = context;
+            _excelProcess = new ExcelProcess(); 
         }
 
         // GET: Student
@@ -171,5 +176,117 @@ namespace FirstWebMVC.Controllers
         {
             return _context.Students.Any(e => e.StudentCode == id);
         }
+        // GET
+    public IActionResult Upload()
+    {
+        return View();
+    }
+
+    // POST
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Upload(IFormFile file)
+    {
+        if (file == null || file.Length == 0)
+        {
+            ModelState.AddModelError("", "Vui lòng chọn file Excel");
+            return View();
+        }
+
+        // 1. Check định dạng file
+        string extension = Path.GetExtension(file.FileName).ToLower();
+        if (extension != ".xls" && extension != ".xlsx")
+        {
+            ModelState.AddModelError("", "Chỉ chấp nhận file Excel");
+            return View();
+        }
+
+        // 2. Tạo folder
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", "Excels");
+
+        if (!Directory.Exists(uploadPath))
+        {
+            Directory.CreateDirectory(uploadPath);
+        }
+
+        // 3. Tạo tên file an toàn
+        var fileName = Guid.NewGuid().ToString() + extension;
+        var filePath = Path.Combine(uploadPath, fileName);
+
+        // 4. Lưu file
+        using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await file.CopyToAsync(stream);
+        }
+
+        // 5. Đọc Excel → DataTable
+        DataTable dt = _excelProcess.ExcelToDataTable(filePath);
+
+        // Lấy tên cột
+        List<string> columns = new List<string>();
+
+        foreach (DataColumn col in dt.Columns)
+        {
+            columns.Add(col.ColumnName);
+        }
+
+        ViewBag.Columns = columns;
+        // 6. Map DataTable → Student
+foreach (DataRow row in dt.Rows)
+{
+   string studentCode = dt.Columns.Contains("StudentCode")
+    ? row["StudentCode"]?.ToString()?.Trim()
+    : row[0]?.ToString()?.Trim();
+
+string fullName = dt.Columns.Contains("FullName")
+    ? row["FullName"]?.ToString()?.Trim()
+    : row[1]?.ToString()?.Trim();
+
+string facultyName = dt.Columns.Contains("FacultyName")
+    ? row["FacultyName"]?.ToString()?.Trim()
+    : row[2]?.ToString()?.Trim();
+
+    if (string.IsNullOrEmpty(studentCode) || string.IsNullOrEmpty(facultyName))
+    {
+        continue;
+    }
+
+    var faculty = _context.Faculties
+        .FirstOrDefault(f => f.FacultyName.ToLower() == facultyName.ToLower());
+
+    if (faculty == null)
+    {
+        continue;
+    }
+
+    if (StudentExists(studentCode))
+    {
+        continue;
+    }
+
+    var student = new Student
+    {
+        StudentCode = studentCode,
+        FullName = fullName,
+        FacultyId = faculty.FacultyId
+    };
+
+    _context.Students.Add(student);
+}
+
+
+        // 7. Lưu DB
+        await _context.SaveChangesAsync();
+
+        ViewBag.Message = "Import thành công!";
+        return RedirectToAction("Index");
+        }
+        
     }
 }
+
+    
+
+
+
+
